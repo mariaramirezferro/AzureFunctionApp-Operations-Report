@@ -35,7 +35,7 @@ main_path = os.getenv('MAIN_PATH')
 # Load API key
 API_KEY = os.getenv('API_KEY')
 # Instantiation of telebot class
-bot = telebot.TeleBot(API_KEY)
+init_bot = lambda: telebot.TeleBot(API_KEY)
 
 def send_message(id:str, message:str)->None:
   """Function to send string message to an specifict chat id
@@ -45,6 +45,7 @@ def send_message(id:str, message:str)->None:
       message (str): string with the message to be send
   """  
   # Send message to chat id
+  bot = init_bot()
   bot.send_message(chat_id=id,
                     text=message,
                     parse_mode='Markdown')
@@ -61,6 +62,7 @@ def send_photo(id:str, photo_path:str, description:str=None)->None:
   # Read image as a bit map
   photo = open(photo_path, 'rb').read()
   # Send image to chat id
+  bot = init_bot()
   bot.send_photo(chat_id= id,
                   photo= photo,
                   caption= description)
