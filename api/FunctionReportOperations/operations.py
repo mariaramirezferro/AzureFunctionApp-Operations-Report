@@ -21,11 +21,11 @@ import pandas as pd
 from .src import db
 from .src import bot
 from .src import utils_bot
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import logging
 
 # Load environment variables
-load_dotenv()
+# load_dotenv()
 # Define project main path
 MAIN_FOLDER = os.getenv('MAIN_PATH')
 
